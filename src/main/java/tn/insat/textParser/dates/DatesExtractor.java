@@ -16,7 +16,7 @@ public class DatesExtractor{
     private static final Logger logger = LogManager.getLogger(DatesExtractor.class);
 
 
-    /** this method returns all dates from input text in nested map in format
+    /** this method returns all dates from input text in nested map in desired format 
      * for example the output of our example will be {2011={8={24=[2011-08-24]}, 9={18=[2011-09-18, 2011-09-18]}},
      * 2014={5={15=[2014-05-15],20=[2014-05-20, 2014-05-20]}}, 2016={1={27=[2016-01-27]}, 4={7=[2016-04-07]}, 6={23=[2016-06-23]}
      * **/
@@ -31,7 +31,7 @@ public class DatesExtractor{
             dates.add(group.getDates().get(0).toInstant().atZone(ZoneId.systemDefault()).toLocalDate());
         }
 
-        // grouping by year then by year then by month
+        // grouping by year then by month then by date
         Map<Integer, Map<Integer, Map<Integer,List<LocalDate>>>>
                 groupByYearMonthDay = dates.
                 stream()
